@@ -380,6 +380,8 @@ class MacroProgram(ElementProgram):
             REPEAT = skip
         else:
             defines = tal.parse_defines(clause)
+            if defines is None:
+                raise LanguageError("Invalid repeat syntax.", clause)
             assert len(defines) == 1
             context, names, expr = defines[0]
 
